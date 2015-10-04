@@ -4,7 +4,7 @@
   <title><![CDATA[Jeff Slutzky's Coding Blog]]></title>
   <link href="http://jeffslutzky.github.io/atom.xml" rel="self"/>
   <link href="http://jeffslutzky.github.io/"/>
-  <updated>2015-09-28T17:35:07-04:00</updated>
+  <updated>2015-10-04T18:14:11-04:00</updated>
   <id>http://jeffslutzky.github.io/</id>
   <author>
     <name><![CDATA[Jeff Slutzky]]></name>
@@ -12,6 +12,54 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Sublime Hints and Shortcuts]]></title>
+    <link href="http://jeffslutzky.github.io/blog/2015/10/04/sublime-hints-and-shortcuts/"/>
+    <updated>2015-10-04T16:14:16-04:00</updated>
+    <id>http://jeffslutzky.github.io/blog/2015/10/04/sublime-hints-and-shortcuts</id>
+    <content type="html"><![CDATA[<p>I&rsquo;ve completed my first week as a student in the <a href="http://www.flatironschool.com">Flatiron School&rsquo;s</a> Web Development Immersive program. It&rsquo;s been exciting and fun and busy and I&rsquo;ve met friendly, interesting people. It&rsquo;s the best experience I&rsquo;ve had in ages.</p>
+
+<p>In this blog post I&rsquo;ll cover <a href="http://www.sublimetext.com/">Sublime</a>. Sublime is the default text editor we use at the Flatiron School; we use it to write all our Ruby programs, and I&rsquo;m using it to write this very blog post. Besides Terminal, it&rsquo;s probably the program we use most often. Therefore, knowing some Sublime tips and shortcuts can help a programmer become much more efficient. One of our instructors sent us a link to a <a href="http://sublime-text-unofficial-documentation.readthedocs.org/en/latest/reference/keyboard_shortcuts_osx.html">whole bunch of Sublime shortcuts</a>. I thought I&rsquo;d cover some of those, and some other tips I&rsquo;ve found most useful so far:</p>
+
+<!-- more -->
+
+
+<p><em>Setting up your visual environment.</em> Since you&rsquo;ll be staring at the Sublime interface all the time, you&rsquo;ll want the screen to look pleasant. The default environment for Sublime is light text on a black background. I find that to be hard on my eyes, but fortunately you can change this. In the menu, go to Sublime Text > Preferences > Color Scheme. Under this menu, Flatiron&rsquo;s Sublime installation has an option called Colorsublime-Themes, where you can pick Solarized Dark or Solarized Light. I use Solarized Light, which gives you a soothing beige background:</p>
+
+<p><img src="http://jeffslutzky.github.io/images/solarized_light.png"></p>
+
+<p>There are a ton of other options in the menu under Color Scheme - Default.</p>
+
+<p><em>Multiple column view.</em> Most Flatiron labs require getting certain tests to pass. It can be helpful to be able to look at your code and the test at the same time, especally when the test includes some data, such as a sample hash that you need to transform into another hash, or some supplied variables. To do this, you can press OPTION+CONTROL plus the number of columns you want. Pressing OPTION+CTRL+2 will give you two columns, and then you can drag any of the open tabs to any column:</p>
+
+<p><img src="http://jeffslutzky.github.io/images/two_column_view.png"></p>
+
+<p>Since this will give you narrower columns, you can then go to the menu bar and select View > Word Wrap so everything remains on the screen.</p>
+
+<p>To switch back to single-column view, press OPTION+CTRL+1.</p>
+
+<p><em>Comment out a line from anywhere on that line.</em> Often I&rsquo;m using binding.pry to look into my program, but then I want to stop using binding.pry and just see if my tests pass. Instead of repeatedly typing and deleting &ldquo;binding.pry,&rdquo; you can just comment it out by typing COMMAND and the slash key (/). The nice thing is that you don&rsquo;t even have to be on the beginning of the line. If you type COMMAND + / from anywhere on that line, it will put a pound sign at the beginning of the line and comment out the whole line. To un-comment a line, just press COMMAND + / again.</p>
+
+<p><em>Replace every instance of some text with different text.</em> Sometimes you&rsquo;ve named a variable but later decide you want to change it to something else. You can easily change every instance of the variable in your program. Just highlight any instance of the text, and <em>every</em> instance of that text will then have an outline around it:</p>
+
+<p><img src="http://jeffslutzky.github.io/images/highlighted_text.png"></p>
+
+<p>Now, press CTRL+COMMAND+G and you can then edit every single instance of that text at once! Everything you type will affect every instance of that text in your program:</p>
+
+<p><img src="http://jeffslutzky.github.io/images/edited_text.png"></p>
+
+<p>When you&rsquo;re done, click anywhere in your program to stop. So cool.</p>
+
+<p>(Just be careful - if your program contains, for example, &ldquo;item&rdquo; and &ldquo;items,&rdquo; you won&rsquo;t be able to edit &ldquo;item&rdquo; without also editing &ldquo;items.&rdquo;)</p>
+
+<p><em>Move an entire chunk of text up or down.</em> If you want to move some text to a different part of your program - for example, if you want to rearrange the order of your methods - just highlight the lines of text you want to move, then click CTRL-COMMAND and the up-arrow or down-arrow. The entire chunk of text will move up or down a line each time you click.</p>
+
+<p>There are so many other shortcuts in Sublime. It would be hard to <a href="http://sublime-text-unofficial-documentation.readthedocs.org/en/latest/reference/keyboard_shortcuts_osx.html">memorize them all at once</a>, but the more I use Sublime, the more I&rsquo;ll probably become familiar with them. You will, too.</p>
+
+<p>Sublime is&hellip; sublime.</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[My First Post on Octopress]]></title>
