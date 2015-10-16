@@ -3,8 +3,8 @@
 # ----------------------- #
 
 url: http://jeffslutzky.github.io
-title: Jeff Slutzky's Coding Blog
-subtitle: My blog about learning to become a web developer at the Flatiron School.
+title: Coding Flatironically
+subtitle: My coding journey at the Flatiron School
 author: Jeff Slutzky
 simple_search: https://www.google.com/search
 description: a coding blog
@@ -13,7 +13,7 @@ description: a coding blog
 # You can customize the format as defined in
 # http://www.ruby-doc.org/core-1.9.2/Time.html#method-i-strftime
 # Additionally, %o will give you the ordinal representation of the day
-date_format: "ordinal"
+date_format: %A, %b %e, %Y | %l:%M %p
 
 # RSS / Email (optional) subscription links (change if using something like Feedburner)
 subscribe_rss: /atom.xml
@@ -64,7 +64,7 @@ default_asides: [asides/recent_posts.html, asides/github.html, asides/delicious.
 # ----------------------- #
 
 # Github repositories
-github_user:
+github_user: jeffslutzky
 github_repo_count: 0
 github_show_profile_link: true
 github_skip_forks: true
