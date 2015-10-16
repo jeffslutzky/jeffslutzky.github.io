@@ -4,7 +4,7 @@
   <title><![CDATA[Coding Flatironically]]></title>
   <link href="http://jeffslutzky.github.io/atom.xml" rel="self"/>
   <link href="http://jeffslutzky.github.io/"/>
-  <updated>2015-10-15T20:43:26-04:00</updated>
+  <updated>2015-10-15T20:47:16-04:00</updated>
   <id>http://jeffslutzky.github.io/</id>
   <author>
     <name><![CDATA[Jeff Slutzky]]></name>
@@ -58,15 +58,6 @@
 <p>There are so many other shortcuts in Sublime. It would be hard to <a href="http://sublime-text-unofficial-documentation.readthedocs.org/en/latest/reference/keyboard_shortcuts_osx.html">memorize them all at once</a>, but the more I use Sublime, the more I&rsquo;ll probably become familiar with them. You will, too.</p>
 
 <p>Sublime is&hellip; sublime.</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[My First Post on Octopress]]></title>
-    <link href="http://jeffslutzky.github.io/blog/2015/09/28/my-first-post-on-octopress/"/>
-    <updated>2015-09-28T17:31:07-04:00</updated>
-    <id>http://jeffslutzky.github.io/blog/2015/09/28/my-first-post-on-octopress</id>
-    <content type="html"><![CDATA[<p>Hello, world.</p>
 ]]></content>
   </entry>
   
