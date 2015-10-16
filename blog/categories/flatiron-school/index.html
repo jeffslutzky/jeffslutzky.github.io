@@ -5,7 +5,7 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Category: Flatiron&nbsp;school - Jeff Slutzky's Coding Blog</title>
+  <title>Category: Flatiron&nbsp;school - Coding Flatironically</title>
   <meta name="author" content="Jeff Slutzky">
 
   
@@ -21,7 +21,7 @@
   <link rel="canonical" href="http://jeffslutzky.github.io/blog/categories/flatiron-school">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
-  <link href="/atom.xml" rel="alternate" title="Jeff Slutzky's Coding Blog" type="application/atom+xml">
+  <link href="/atom.xml" rel="alternate" title="Coding Flatironically" type="application/atom+xml">
   <script src="/javascripts/modernizr-2.0.js"></script>
   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
   <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
@@ -36,9 +36,9 @@
 
 <body   >
   <header role="banner"><hgroup>
-  <h1><a href="/">Jeff Slutzky's Coding Blog</a></h1>
+  <h1><a href="/">Coding Flatironically</a></h1>
   
-    <h2>My blog about learning to become a web developer at the Flatiron School.</h2>
+    <h2>My coding journey at the Flatiron School</h2>
   
 </hgroup>
 
@@ -127,6 +127,35 @@
       </li>
     
   </ul>
+</section>
+
+<section>
+  <h1>GitHub Repos</h1>
+  <ul id="gh_repos">
+    <li class="loading">Status updating...</li>
+  </ul>
+  
+  <a href="https://github.com/jeffslutzky">@jeffslutzky</a> on GitHub
+  
+  <script type="text/javascript">
+    $(document).ready(function(){
+        if (!window.jXHR){
+            var jxhr = document.createElement('script');
+            jxhr.type = 'text/javascript';
+            jxhr.src = '/javascripts/libs/jXHR.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(jxhr, s);
+        }
+
+        github.showRepos({
+            user: 'jeffslutzky',
+            count: 0,
+            skip_forks: true,
+            target: '#gh_repos'
+        });
+    });
+  </script>
+  <script src="/javascripts/github.js" type="text/javascript"> </script>
 </section>
 
 
