@@ -15,7 +15,7 @@ Sort of. I'll discuss cron jobs.
 
 A cron job is a way to schedule tasks ahead of time in Unix-type command-line systems such as the Mac Terminal -- for example, sending out an email, updating a file at the same time every day, and so on. Tasks can be scheduled for a particular time or at regular intervals -- daily, weekly, etc.
 
-I decided I wanted to tweet something on October 21, 2015, at 4:29 p.m., to celebrate the exact time Marty McFly arrives from 1985. I wanted to preschedule my tweet, so it could go out even if I'm away from my computer at the time (as long as my computer is running). First I tried some web apps, but I couldn't get tweets to appear at the exact time I wanted. So I turned to the command line.
+I decided I wanted to tweet something on October 21, 2015, at 4:29 pm, to celebrate the exact time Marty McFly arrives from 1985. I wanted to preschedule my tweet, so it could go out even if I'm away from my computer at the time (as long as my computer is running). First I tried some web apps, but I couldn't get tweets to appear at the exact time I wanted. So I turned to the command line.
 
 <!-- more -->
 
@@ -89,7 +89,7 @@ After that, open the crontab file by typing:
 
 This file requires one line containing two things: a series of five numbers corresponding to the time we want the task to run, and the path to the shell script we just wrote.
 
-The numbers come in this order: minutes, hours (in 24-hour format), days of month, months, days of week. For example, October 21 at 4:29 pm (i.e. 10/21 at 16:29) is:
+The numbers come in this order: minutes, hours (in 24-hour format), days of month, months, days of week. I don't care about the day of the week, so I can replace that with an asterisk (*). For example, October 21 at 4:29 pm (i.e. 10/21 at 16:29) is:
 
 <pre>29 16 21 10 *</pre>
 
