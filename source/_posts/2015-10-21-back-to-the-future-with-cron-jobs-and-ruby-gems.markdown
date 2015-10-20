@@ -89,7 +89,7 @@ After that, open the crontab file by typing:
 
 This file requires one line containing two things: a series of five numbers corresponding to the time we want the task to run, and the path to the shell script we just wrote.
 
-The numbers come in this order: minutes, hours (in 24-hour format), days of month, months, days of week. Anything not used is replaced by an asterisk (*). For example, October 21 at 4:29 pm (i.e. 10/21 at 16:29) is:
+The numbers come in this order: minutes, hours (in 24-hour format), days of month, months, days of week. For example, October 21 at 4:29 pm (i.e. 10/21 at 16:29) is:
 
 <pre>29 16 21 10 *</pre>
 
