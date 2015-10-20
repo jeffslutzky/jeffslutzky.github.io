@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Flatiron&nbsp;school | Coding Flatironically]]></title>
   <link href="http://jeffslutzky.github.io/blog/categories/flatiron-school/atom.xml" rel="self"/>
   <link href="http://jeffslutzky.github.io/"/>
-  <updated>2015-10-20T19:31:23-04:00</updated>
+  <updated>2015-10-20T19:32:53-04:00</updated>
   <id>http://jeffslutzky.github.io/</id>
   <author>
     <name><![CDATA[Jeff Slutzky]]></name>
@@ -151,7 +151,7 @@
 
 <p>To recap:</p>
 
-<p>(1) Create a file containing a command-line action, and set the file permissions.</p>
+<p>(1) Create a file with an .sh extension containing a command-line action, and set the file permissions.</p>
 
 <pre>#!/bin/bash
 
