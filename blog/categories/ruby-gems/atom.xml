@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Ruby&nbsp;gems | Coding Flatironically]]></title>
   <link href="http://jeffslutzky.github.io/blog/categories/ruby-gems/atom.xml" rel="self"/>
   <link href="http://jeffslutzky.github.io/"/>
-  <updated>2015-10-20T19:43:10-04:00</updated>
+  <updated>2015-10-20T19:47:44-04:00</updated>
   <id>http://jeffslutzky.github.io/</id>
   <author>
     <name><![CDATA[Jeff Slutzky]]></name>
@@ -29,7 +29,7 @@
 
 <p>A cron job is a way to schedule tasks ahead of time in Unix-type command-line systems such as the Mac Terminal &ndash; for example, sending out an email, updating a file at the same time every day, and so on. Tasks can be scheduled for a particular time or at regular intervals &ndash; daily, weekly, etc.</p>
 
-<p>I decided I wanted to tweet something on October 21, 2015, at 4:29 p.m., to celebrate the exact time Marty McFly arrives from 1985. I wanted to preschedule my tweet, so it could go out even if I&rsquo;m away from my computer at the time (as long as my computer is running). First I tried some web apps, but I couldn&rsquo;t get tweets to appear at the exact time I wanted. So I turned to the command line.</p>
+<p>I decided I wanted to tweet something on October 21, 2015, at 4:29 pm, to celebrate the exact time Marty McFly arrives from 1985. I wanted to preschedule my tweet, so it could go out even if I&rsquo;m away from my computer at the time (as long as my computer is running). First I tried some web apps, but I couldn&rsquo;t get tweets to appear at the exact time I wanted. So I turned to the command line.</p>
 
 <!-- more -->
 
@@ -116,7 +116,7 @@
 
 <p>This file requires one line containing two things: a series of five numbers corresponding to the time we want the task to run, and the path to the shell script we just wrote.</p>
 
-<p>The numbers come in this order: minutes, hours (in 24-hour format), days of month, months, days of week. For example, October 21 at 4:29 pm (i.e. 10/21 at 16:29) is:</p>
+<p>The numbers come in this order: minutes, hours (in 24-hour format), days of month, months, days of week. I don&rsquo;t care about the day of the week, so I can replace that with an asterisk (*). For example, October 21 at 4:29 pm (i.e. 10/21 at 16:29) is:</p>
 
 <pre>29 16 21 10 *</pre>
 
