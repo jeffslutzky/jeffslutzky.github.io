@@ -57,19 +57,19 @@ Open this empty file in your text editor. At the top of the empty file, type
 
 (The exact path might be different on different computers, but this worked for me on a Mac.)
 
-Next, you can type "t update "[tweet text], but you have to preface the "t" with something. Ruby Version Manager (rvm) creates wrappers for gems, and you need to preface the "t" with the path for the wrappers. <a href="https://rvm.io/deployment/cron">This link</a> helped me figure that path out. For me, that path is /Users/jeffslutzky/.rvm/wrappers/ruby-2.2.3, so the full path to "t" is:
+Next, you can type the "t" update command, but you have to preface the "t" with something. Ruby Version Manager (rvm) creates wrappers for gems, and you need to preface the "t" with the path for the wrappers. <a href="https://rvm.io/deployment/cron">This link</a> helped me figure that path out. For me, that path is /Users/jeffslutzky/.rvm/wrappers/ruby-2.2.3, so the full path to "t" is:
 
 <pre>/Users/jeffslutzky/.rvm/wrappers/ruby-2.2.3/t</pre>
 
 And therefore the full command is:
 
-<pre>/Users/jeffslutzky/.rvm/wrappers/ruby-2.2.3/t update ["tweet text]"</pre>
+<pre>/Users/jeffslutzky/.rvm/wrappers/ruby-2.2.3/t update "[tweet text]"</pre>
 
 So the full file is these two lines:
 
 <pre>#!/bin/bash
 
-/Users/jeffslutzky/.rvm/wrappers/ruby-2.2.3/t update ["tweet text]"</pre>
+/Users/jeffslutzky/.rvm/wrappers/ruby-2.2.3/t update "[tweet text]"</pre>
 
 After creating the shell script, we have to change its permissions, by going back to the command line and typing
 
@@ -123,7 +123,7 @@ To recap:
 
 <pre>#!/bin/bash
 
-/Users/jeffslutzky/.rvm/wrappers/ruby-2.2.3/t update ["tweet text]"</pre>
+/Users/jeffslutzky/.rvm/wrappers/ruby-2.2.3/t update "[tweet text]"</pre>
 
 (2) Create a new task in the crontab to execute the above file at a chosen time.
 
