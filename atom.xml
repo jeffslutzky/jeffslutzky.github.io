@@ -4,7 +4,7 @@
   <title><![CDATA[Coding Flatironically]]></title>
   <link href="http://jeffslutzky.github.io/atom.xml" rel="self"/>
   <link href="http://jeffslutzky.github.io/"/>
-  <updated>2015-10-20T19:24:20-04:00</updated>
+  <updated>2015-10-20T19:31:23-04:00</updated>
   <id>http://jeffslutzky.github.io/</id>
   <author>
     <name><![CDATA[Jeff Slutzky]]></name>
@@ -78,21 +78,21 @@
 
 <p>(The exact path might be different on different computers, but this worked for me on a Mac.)</p>
 
-<p>Next, you can type &ldquo;t update &rdquo;[tweet text], but you have to preface the &ldquo;t&rdquo; with something. Ruby Version Manager (rvm) creates wrappers for gems, and you need to preface the &ldquo;t&rdquo; with the path for the wrappers. <a href="https://rvm.io/deployment/cron">This link</a> helped me figure that path out. For me, that path is /Users/jeffslutzky/.rvm/wrappers/ruby-2.2.3, so the full path to &ldquo;t&rdquo; is:</p>
+<p>Next, you can type the &ldquo;t&rdquo; update command, but you have to preface the &ldquo;t&rdquo; with something. Ruby Version Manager (rvm) creates wrappers for gems, and you need to preface the &ldquo;t&rdquo; with the path for the wrappers. <a href="https://rvm.io/deployment/cron">This link</a> helped me figure that path out. For me, that path is /Users/jeffslutzky/.rvm/wrappers/ruby-2.2.3, so the full path to &ldquo;t&rdquo; is:</p>
 
 <pre>/Users/jeffslutzky/.rvm/wrappers/ruby-2.2.3/t</pre>
 
 
 <p>And therefore the full command is:</p>
 
-<pre>/Users/jeffslutzky/.rvm/wrappers/ruby-2.2.3/t update ["tweet text]"</pre>
+<pre>/Users/jeffslutzky/.rvm/wrappers/ruby-2.2.3/t update "[tweet text]"</pre>
 
 
 <p>So the full file is these two lines:</p>
 
 <pre>#!/bin/bash
 
-/Users/jeffslutzky/.rvm/wrappers/ruby-2.2.3/t update ["tweet text]"</pre>
+/Users/jeffslutzky/.rvm/wrappers/ruby-2.2.3/t update "[tweet text]"</pre>
 
 
 <p>After creating the shell script, we have to change its permissions, by going back to the command line and typing</p>
@@ -155,7 +155,7 @@
 
 <pre>#!/bin/bash
 
-/Users/jeffslutzky/.rvm/wrappers/ruby-2.2.3/t update ["tweet text]"</pre>
+/Users/jeffslutzky/.rvm/wrappers/ruby-2.2.3/t update "[tweet text]"</pre>
 
 
 <p>(2) Create a new task in the crontab to execute the above file at a chosen time.</p>
