@@ -4,7 +4,7 @@
 
 url: http://jeffslutzky.github.io
 title: Coding Flatironically
-subtitle: My coding journey at the Flatiron School
+subtitle: My web development journey at the Flatiron School
 author: Jeff Slutzky
 simple_search: https://www.google.com/search
 description: a coding blog
@@ -13,7 +13,7 @@ description: a coding blog
 # You can customize the format as defined in
 # http://www.ruby-doc.org/core-1.9.2/Time.html#method-i-strftime
 # Additionally, %o will give you the ordinal representation of the day
-date_format: "%A, %b %e, %Y | %l:%M %p"
+date_format: "%A, %B %e, %Y | %l:%M %p"
 
 # RSS / Email (optional) subscription links (change if using something like Feedburner)
 subscribe_rss: /atom.xml
