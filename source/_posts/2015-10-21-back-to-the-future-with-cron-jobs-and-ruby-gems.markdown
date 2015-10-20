@@ -119,7 +119,7 @@ I've actually pre-scheduled two tweets. If my calculations are correct, when thi
 
 To recap:
 
-(1) Create a file containing a command-line action, and set the file permissions.
+(1) Create a file with an .sh extension containing a command-line action, and set the file permissions.
 
 <pre>#!/bin/bash
 
