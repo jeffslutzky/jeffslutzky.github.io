@@ -15,7 +15,17 @@ Sort of. I'll discuss cron jobs.
 
 A cron job is a way to schedule tasks ahead of time in Unix-type command-line systems such as the Mac Terminal -- for example, sending out an email, updating a file at the same time every day, and so on. Tasks can be scheduled for a particular time or at regular intervals -- daily, weekly, etc.
 
-I decided I wanted to tweet something on October 21, 2015, at 4:29 pm, to celebrate the exact time Marty McFly arrives from 1985. I wanted to preschedule my tweet, so it could go out even if I'm away from my computer at the time (as long as my computer is running). First I tried some web apps, but I couldn't get tweets to appear at the exact time I wanted. So I turned to the command line.
+I decided I wanted to post the following tweet on October 21, 2015, at 4:29 pm, to celebrate Marty McFly's arrival from 1985:
+
+<pre>"Yes, it's October 21, 2015 at 4:29 pm...
+
+...on the East Coast.
+
+But Hill Valley is in California. Three hours to go.
+
+#BackToTheFutureDay"</pre>
+
+I wanted to preschedule my tweet, so it could go out even if I'm away from my computer at the time (as long as my computer is running). First I tried some web apps, but I couldn't get tweets to appear at the exact time I wanted. So I turned to the command line.
 
 <!-- more -->
 
