@@ -23,7 +23,7 @@ I decided I wanted to post the following tweet on October 21, 2015, at 4:29 pm, 
 
 But Hill Valley is in California. Three hours to go.
 
-#BackToTheFutureDay</pre>
+#BackToTheFuture</pre>
 
 I wanted to preschedule my tweet, so it could go out even if I'm away from my computer at the time (as long as my computer is running). First I tried some web apps, but I couldn't get tweets to appear at the exact time I wanted. So I turned to the command line. Here's how this works.
 
