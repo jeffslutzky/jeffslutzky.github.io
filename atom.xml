@@ -4,7 +4,7 @@
   <title><![CDATA[Coding Flatironically]]></title>
   <link href="http://jeffslutzky.github.io/atom.xml" rel="self"/>
   <link href="http://jeffslutzky.github.io/"/>
-  <updated>2015-10-20T22:20:10-04:00</updated>
+  <updated>2015-10-20T22:21:59-04:00</updated>
   <id>http://jeffslutzky.github.io/</id>
   <author>
     <name><![CDATA[Jeff Slutzky]]></name>
@@ -72,7 +72,9 @@ But Hill Valley is in California. Three hours to go.
 <pre>echo $HOME</pre>
 
 
-<p>Or you can go there directly by typing</p>
+<p>My home directory is &ldquo;Users/[myname].&rdquo;</p>
+
+<p>You can go there directly by typing</p>
 
 <pre>cd $HOME</pre>
 
