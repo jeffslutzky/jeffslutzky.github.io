@@ -4,7 +4,7 @@
   <title><![CDATA[Coding Flatironically]]></title>
   <link href="http://jeffslutzky.github.io/atom.xml" rel="self"/>
   <link href="http://jeffslutzky.github.io/"/>
-  <updated>2015-10-20T22:22:52-04:00</updated>
+  <updated>2015-10-21T16:38:15-04:00</updated>
   <id>http://jeffslutzky.github.io/</id>
   <author>
     <name><![CDATA[Jeff Slutzky]]></name>
@@ -37,7 +37,7 @@
 
 But Hill Valley is in California. Three hours to go.
 
-#BackToTheFutureDay</pre>
+#BackToTheFuture</pre>
 
 
 <p>I wanted to preschedule my tweet, so it could go out even if I&rsquo;m away from my computer at the time (as long as my computer is running). First I tried some web apps, but I couldn&rsquo;t get tweets to appear at the exact time I wanted. So I turned to the command line. Here&rsquo;s how this works.</p>
