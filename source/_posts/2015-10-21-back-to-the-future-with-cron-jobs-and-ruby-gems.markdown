@@ -41,7 +41,7 @@ After connecting your Twitter account to the gem by following the instructions o
 
 The text of your tweet will immediately show up on Twitter as a tweet from your account.
 
-But what if you want to pre-schedule a tweet? You'll need to set up a <a href="https://en.wikipedia.org/wiki/Cron">cron job</a>.
+But what if you want to pre-schedule a tweet? What if you want to run the above command not now, but later? You'll need to set up a <a href="https://en.wikipedia.org/wiki/Cron">cron job</a>.
 
 <em>(2) Setting up a cron job</em>
 
@@ -49,7 +49,7 @@ This involves two steps: (a) setting up a file that contains your "t" command, a
 
 <em>(a) Setting up the file containing your "t" command</em>
 
-The best place to create this file is in your home directory. To find out where this is, type:
+The best place to create this file (or shell script) is in your home directory. To find out where this is, type:
 
 <pre>echo $HOME</pre>
 
