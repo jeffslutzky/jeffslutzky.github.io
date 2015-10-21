@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Shell&nbsp;scripts | Coding Flatironically]]></title>
   <link href="http://jeffslutzky.github.io/blog/categories/shell-scripts/atom.xml" rel="self"/>
   <link href="http://jeffslutzky.github.io/"/>
-  <updated>2015-10-20T22:17:05-04:00</updated>
+  <updated>2015-10-20T22:20:10-04:00</updated>
   <id>http://jeffslutzky.github.io/</id>
   <author>
     <name><![CDATA[Jeff Slutzky]]></name>
@@ -59,7 +59,7 @@ But Hill Valley is in California. Three hours to go.
 
 <p>The text of your tweet will immediately show up on Twitter as a tweet from your account.</p>
 
-<p>But what if you want to pre-schedule a tweet? You&rsquo;ll need to set up a <a href="https://en.wikipedia.org/wiki/Cron">cron job</a>.</p>
+<p>But what if you want to pre-schedule a tweet? What if you want to run the above command not now, but later? You&rsquo;ll need to set up a <a href="https://en.wikipedia.org/wiki/Cron">cron job</a>.</p>
 
 <p><em>(2) Setting up a cron job</em></p>
 
@@ -67,7 +67,7 @@ But Hill Valley is in California. Three hours to go.
 
 <p><em>(a) Setting up the file containing your &ldquo;t&rdquo; command</em></p>
 
-<p>The best place to create this file is in your home directory. To find out where this is, type:</p>
+<p>The best place to create this file (or shell script) is in your home directory. To find out where this is, type:</p>
 
 <pre>echo $HOME</pre>
 
