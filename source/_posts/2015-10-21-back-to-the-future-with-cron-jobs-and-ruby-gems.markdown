@@ -25,13 +25,13 @@ But Hill Valley is in California. Three hours to go.
 
 #BackToTheFutureDay</pre>
 
-I wanted to preschedule my tweet, so it could go out even if I'm away from my computer at the time (as long as my computer is running). First I tried some web apps, but I couldn't get tweets to appear at the exact time I wanted. So I turned to the command line.
+I wanted to preschedule my tweet, so it could go out even if I'm away from my computer at the time (as long as my computer is running). First I tried some web apps, but I couldn't get tweets to appear at the exact time I wanted. So I turned to the command line. Here's how this works.
 
 <!-- more -->
 
 <em>(1) Using the "t" Ruby gem</em>
 
-The first thing I did was install <a href="https://github.com/sferik/t">a Ruby gem called t</a>, which provides command-line access to Twitter:
+The first step is to install <a href="https://github.com/sferik/t">a Ruby gem called t</a>, which provides command-line access to Twitter:
 
 <pre>gem install t</pre>
 
