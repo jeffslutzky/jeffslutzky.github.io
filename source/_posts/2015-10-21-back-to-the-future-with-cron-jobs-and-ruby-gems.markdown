@@ -53,7 +53,9 @@ The best place to create this file (or shell script) is in your home directory. 
 
 <pre>echo $HOME</pre>
 
-Or you can go there directly by typing
+My home directory is "Users/[myname]."
+
+You can go there directly by typing
 
 <pre>cd $HOME</pre>
 
