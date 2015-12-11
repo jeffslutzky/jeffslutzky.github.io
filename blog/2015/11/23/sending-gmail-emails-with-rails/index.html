@@ -1,0 +1,403 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Sending Gmail Emails With Rails - Coding Flatironically</title>
+  <meta name="author" content="Jeff Slutzky">
+
+  
+  <meta name="description" content="As part of our meetup project, I needed to figure out how to send email via Rails. Our website allows a user to select a favorite photo and then &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://jeffslutzky.github.io/blog/2015/11/23/sending-gmail-emails-with-rails">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="Coding Flatironically" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href='https://fonts.googleapis.com/css?family=Noto+Serif:400,700' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+
+  
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">Coding Flatironically</a></h1>
+  
+    <h2>Learning web development at the Flatiron School</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  
+  
+</ul>
+
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">Sending Gmail Emails With Rails</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+
+<time datetime="2015-11-23T21:59:02-05:00" pubdate data-updated="true">Monday, November 23, 2015 |  9:59 PM</time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p>As part of our meetup project, I needed to figure out how to send email via Rails. Our website allows a user to select a favorite photo and then receive a link to that photo via email.</p>
+
+<p>Rails sends email through something called the Action Mailer. The Rails Guides <a href="http://guides.rubyonrails.org/action_mailer_basics.html">explain</a> how to set up Action Mailer, but I needed to take some additional steps that the documentation didn&rsquo;t include. For instance, the guide explains how to send a welcome email after a user signs up, but we wanted to send an email later on - after the user selects a favorite photo. Here is how I got it working for Gmail.</p>
+
+<p>As the guide points out, mailers are conceptually similar to controllers. We generate a mailer via the command line:</p>
+
+<pre>rails generate mailer UserMailer</pre>
+
+
+<p>This creates a file called <strong>app/mailers/user_mailer.rb</strong>. More on this file later.</p>
+
+<p>In our project, the user enters an email address via a form. In the code below, the form_tag directs to the <strong>users/create</strong> action - the <strong>create</strong> method in the User controller - and the e-mail field passes an <strong>:email_address</strong> to the params. And since we want to send the user a photo URL, we pass the photo URL as a hidden field:</p>
+
+<pre><%= form_tag("users/create", method: "get") do %>
+&lt;img src="<%=@picture_chosen.photo_url%>"&gt;
+&lt;div&gt;
+    <%= hidden_field_tag(:photo_url, @picture_chosen.photo_url) %>
+    <%= email_field(:user, :email_address) %>
+    <%= submit_tag("Submit")%>
+<% end %>
+&lt;/div&gt;</pre>
+
+
+<p>On submit, the data passes to the User controller&rsquo;s <strong>create</strong> method:</p>
+
+<pre>class UsersController < ApplicationController
+
+    def create
+        @user = User.new(user_params)
+        respond_to do |format|
+            @user.email_address = params[:user][:email_address]
+          @user.photo_url = params[:photo_url]
+          if @user.save
+            UserMailer.result_email(@user).deliver_now
+            format.html { redirect_to(root_path, notice: 'Favorite photo chosen') }
+            format.json { render json: root_path, status: :created, location: @user }
+          else
+            format.html { render action: 'new' }
+            format.json { render json: @user.errors, status: :unprocessable_entity }
+          end
+        end
+      end
+
+    private
+
+    def user_params
+        params.require(:user).permit(user: [:email_address, :photo_url] )
+    end
+
+    end</pre>
+
+
+<p>The email address gets saved as <strong>@user.email_address</strong>, which we must add to the permitted user params. Upon <strong>@user.save</strong>, we get directed to:</p>
+
+<pre><code>UserMailer.result_email(@user).deliver_now
+</code></pre>
+
+<p>UserMailer is the mailer we created at the beginning via <strong>rails generate mailer UserMailer</strong>. (The <strong>deliver_now</strong> at the end sends the email immediately; there is also an option for <strong>deliver_later</strong>.)</p>
+
+<p>So we&rsquo;re directed to the UserMailer, and we need to put the following code in there:</p>
+
+<pre><code>class UserMailer &lt; ApplicationMailer
+    def result_email(user)
+        @user = user
+        @url  = user.photo_url
+    mail(to: @user.email_address, subject: 'Your favorite photo')
+    end
+end
+</code></pre>
+
+<p>We&rsquo;re setting the individual user and the photo URL as objects so we can pass them, and the <strong>mail</strong> command specifies the email address and the email subject.</p>
+
+<p>The UserMailer inherits from ApplicationMailer, which, like UserMailer, lives in the app/mailers/ folder. ApplicationMailer needs to contain the email address from which the email will be sent:</p>
+
+<pre><code>    class ApplicationMailer &lt; ActionMailer::Base
+      default from: "email_sender@gmail.com"
+      layout 'mailer'
+    end
+</code></pre>
+
+<p>(Replace &ldquo;email_sender&rdquo; with the actual sending account.)</p>
+
+<p>To go along with the UserMailer, there is a corresponding user_mailer folder under app/views/. The user_mailer folder contains two files, <strong>result_email.html.erb</strong> and <strong>result_email.text.erb</strong>. The former sends an HTML-formatted email; the latter contains a text-formatted email, which will be sent if the user&rsquo;s email client doesn&rsquo;t accept HTML-formatted email.</p>
+
+<p>Here&rsquo;s our HTML-formatted email in our <strong>result_email.html.erb</strong> file:</p>
+
+<pre>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;meta content='text/html; charset=UTF-8' http-equiv='Content-Type' /&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;h1&gt;Hello!&lt;/h1&gt;
+    &lt;p&gt;
+      Thanks for picking your favorite photo! Here is a link to the photo you chose as your favorite:
+    &lt;/p&gt;
+    &lt;p&gt;
+      <%= @url %>
+    &lt;/p&gt;
+  &lt;/body&gt;
+&lt;/html&gt;</pre>
+
+
+<p>Note that since we created a @url object in the UserMailer, we can call it in the email above.</p>
+
+<p>This sets everything up, but the email won&rsquo;t actually get sent unless we add the following code to the three files under config/environments/ &ndash; development.rb, production.rb, and test.rb:</p>
+
+<pre><code>    config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
+    config.action_mailer.delivery_method = :smtp
+    config.action_mailer.raise_delivery_errors = true
+    config.action_mailer.smtp_settings =  {
+      :address    =&gt; "smtp.gmail.com",
+      :port       =&gt; 587,
+      :domain     =&gt; 'localhost',
+      :user_name  =&gt; ENV["gmail_username"],
+      :password   =&gt; ENV["gmail_password"],
+      :authentication   =&gt; :login,
+      :enable_starttls_auto   =&gt; true
+      }
+</code></pre>
+
+<p>This works for Gmail. Other email clients will require slightly different settings.</p>
+
+<p>Note that <strong>:user_name</strong> and <strong>:password</strong> are ENV keys, because these are the sender&rsquo;s username and password, and we don&rsquo;t want the password to be visible to others. We should also install the <a href="https://github.com/laserlemon/figaro">Figaro gem</a> and require it in the Gemfile. This creates a file called config/application.yml, which gets added to the .gitignore file and will keep the email name and password hidden. Open this file and add the following (replacing the sample user name and password with the real ones):</p>
+
+<pre>gmail_username: "emailer_sender@gmail.com"
+gmail_password: "123456789"</pre>
+
+
+<p>Make sure &ldquo;gmail_username&rdquo; and &ldquo;gmail_password&rdquo; are spelled the same in both the config/environments files and the config/application.yml file.</p>
+
+<p>And we&rsquo;re done. Your application can now send email.</p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Jeff Slutzky</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+
+<time datetime="2015-11-23T21:59:02-05:00" pubdate data-updated="true">Monday, November 23, 2015 |  9:59 PM</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/flatiron-school/'>flatiron&nbsp;school</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://jeffslutzky.github.io/blog/2015/11/23/sending-gmail-emails-with-rails/" data-via="" data-counturl="http://jeffslutzky.github.io/blog/2015/11/23/sending-gmail-emails-with-rails/" >Tweet</a>
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2015/11/05/refactoring-your-code-after-adding-a-feature/" title="Previous Post: Refactoring Your Code After Adding a Feature">&laquo; Refactoring Your Code After Adding a Feature</a>
+      
+      
+    </p>
+  </footer>
+</article>
+
+</div>
+
+  <aside class="sidebar">
+   
+<form action="https://www.google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:jeffslutzky.github.io" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2015/11/23/sending-gmail-emails-with-rails/">Sending Gmail Emails With Rails</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2015/11/05/refactoring-your-code-after-adding-a-feature/">Refactoring Your Code After Adding a Feature</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2015/10/21/back-to-the-future-with-cron-jobs-and-ruby-gems/">Back to the Future With Cron Jobs and Ruby Gems</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2015/10/04/sublime-hints-and-shortcuts/">Sublime Hints and Shortcuts</a>
+      </li>
+    
+  </ul>
+</section>
+
+<section>
+  <h1>GitHub Repos</h1>
+  <ul id="gh_repos">
+    <li class="loading">Status updating...</li>
+  </ul>
+  
+  <a href="https://github.com/jeffslutzky">@jeffslutzky</a> on GitHub
+  
+  <script type="text/javascript">
+    $(document).ready(function(){
+        if (!window.jXHR){
+            var jxhr = document.createElement('script');
+            jxhr.type = 'text/javascript';
+            jxhr.src = '/javascripts/libs/jXHR.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(jxhr, s);
+        }
+
+        github.showRepos({
+            user: 'jeffslutzky',
+            count: 0,
+            skip_forks: true,
+            target: '#gh_repos'
+        });
+    });
+  </script>
+  <script src="/javascripts/github.js" type="text/javascript"> </script>
+</section>
+
+
+
+
+
+  
+</aside>
+
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2015 - Jeff Slutzky -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+<script>
+  $(document).ready(function() {  
+    var stickyNavTop = $('nav').offset().top;  
+      
+    var stickyNav = function(){  
+      var scrollTop = $(window).scrollTop(); 
+      var navHasClassSticky = $('nav').hasClass('sticky');
+
+      if (scrollTop > stickyNavTop && navHasClassSticky) {   
+        return true;
+      } else if (scrollTop > stickyNavTop) {
+        $('nav').hide();
+        $('nav').addClass('sticky');
+        $('nav').fadeIn('2000');
+      } else {  
+        $('nav').removeClass('sticky');   
+      }  
+    };  
+      
+    stickyNav();  
+      
+    $(window).scroll(function() {  
+      stickyNav();  
+    });  
+  });  
+</script>
+
+
+</body>
+</html>

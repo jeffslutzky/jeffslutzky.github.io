@@ -1,0 +1,448 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Back to the Future With Cron Jobs and Ruby Gems - Coding Flatironically</title>
+  <meta name="author" content="Jeff Slutzky">
+
+  
+  <meta name="description" content="It&rsquo;s Back to the Future Day! Back to the Future is my all-time favorite movie &ndash; and the sequels are a close second and third &ndash; so &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://jeffslutzky.github.io/blog/2015/10/21/back-to-the-future-with-cron-jobs-and-ruby-gems">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="Coding Flatironically" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href='https://fonts.googleapis.com/css?family=Noto+Serif:400,700' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+
+  
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">Coding Flatironically</a></h1>
+  
+    <h2>Learning web development at the Flatiron School</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  
+  
+</ul>
+
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">Back to the Future With Cron Jobs and Ruby Gems</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+
+<time datetime="2015-10-21T08:25:00-04:00" pubdate data-updated="true">Wednesday, October 21, 2015 |  8:25 AM</time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p>It&rsquo;s <em>Back to the Future</em> Day!</p>
+
+<iframe width="840" height="473" src="https://www.youtube.com/embed/nT9Drje0Fwc" frameborder="0" allowfullscreen></iframe>
+
+
+<p><em>Back to the Future</em> is my all-time favorite movie &ndash;  and the sequels are a close second and third &ndash; so this is a pretty special day. To celebrate, I&rsquo;ll discuss time travel!</p>
+
+<p>Sort of. I&rsquo;ll discuss cron jobs.</p>
+
+<p>A cron job is a way to schedule tasks ahead of time in Unix-type command-line systems such as the Mac Terminal &ndash; for example, sending out an email, updating a file at the same time every day, and so on. Tasks can be scheduled for a particular time or at regular intervals &ndash; daily, weekly, etc.</p>
+
+<p>I decided I wanted to post the following tweet on October 21, 2015, at 4:29 pm, to celebrate Marty McFly&rsquo;s arrival from 1985:</p>
+
+<pre>Yes, it's October 21, 2015 at 4:29 pm...
+
+...on the East Coast.
+
+But Hill Valley is in California. Three hours to go.
+
+#BackToTheFuture</pre>
+
+
+<p>I wanted to preschedule my tweet, so it could go out even if I&rsquo;m away from my computer at the time (as long as my computer is running). First I tried some web apps, but I couldn&rsquo;t get tweets to appear at the exact time I wanted. So I turned to the command line. Here&rsquo;s how this works.</p>
+
+<!-- more -->
+
+
+<p><em>(1) Using the &ldquo;t&rdquo; Ruby gem</em></p>
+
+<p>The first step is to install <a href="https://github.com/sferik/t">a Ruby gem called t</a>, which provides command-line access to Twitter:</p>
+
+<pre>gem install t</pre>
+
+
+<p>After connecting your Twitter account to the gem by following the instructions on the gem&rsquo;s <a href="https://github.com/sferik/t">GitHub page</a>, you can tweet directly from the command line by typing</p>
+
+<pre>t update "[text of your tweet]"</pre>
+
+
+<p>The text of your tweet will immediately show up on Twitter as a tweet from your account.</p>
+
+<p>But what if you want to pre-schedule a tweet? What if you want to run the above command not now, but later? You&rsquo;ll need to set up a <a href="https://en.wikipedia.org/wiki/Cron">cron job</a>.</p>
+
+<p><em>(2) Setting up a cron job</em></p>
+
+<p>This involves two steps: (a) setting up a file that contains your &ldquo;t&rdquo; command, and (b) setting up the actual cron job.</p>
+
+<p><em>(a) Setting up the file containing your &ldquo;t&rdquo; command</em></p>
+
+<p>The best place to create this file (or shell script) is in your home directory. To find out where this is, type:</p>
+
+<pre>echo $HOME</pre>
+
+
+<p>My home directory is &ldquo;Users/[myname].&rdquo;</p>
+
+<p>You can go there directly by typing</p>
+
+<pre>cd $HOME</pre>
+
+
+<p>In your home directory, create a new file with a .sh extension, which is the extension for a shell script:</p>
+
+<pre>touch [filename].sh</pre>
+
+
+<p>Open this empty file in your text editor. At the top of the empty file, type</p>
+
+<pre>#!/bin/bash</pre>
+
+
+<p>(The exact path might be different on different computers, but this worked for me on a Mac.)</p>
+
+<p>Next, you can type the &ldquo;t&rdquo; update command, but you have to preface the &ldquo;t&rdquo; with something. Ruby Version Manager (rvm) creates wrappers for gems, and you need to preface the &ldquo;t&rdquo; with the path for the wrappers. <a href="https://rvm.io/deployment/cron">This link</a> helped me figure that path out. For me, that path is /Users/jeffslutzky/.rvm/wrappers/ruby-2.2.3, so the full path to &ldquo;t&rdquo; is:</p>
+
+<pre>/Users/jeffslutzky/.rvm/wrappers/ruby-2.2.3/t</pre>
+
+
+<p>And therefore the full command is:</p>
+
+<pre>/Users/jeffslutzky/.rvm/wrappers/ruby-2.2.3/t update "[tweet text]"</pre>
+
+
+<p>So the full file is these two lines:</p>
+
+<pre>#!/bin/bash
+
+/Users/jeffslutzky/.rvm/wrappers/ruby-2.2.3/t update "[tweet text]"</pre>
+
+
+<p>After creating the shell script, we have to change its permissions, by going back to the command line and typing</p>
+
+<pre>chmod +x [filename].sh</pre>
+
+
+<p>After creating the shell script and setting its permissions, the next step is to set up the cron job.</p>
+
+<p><em>(b) Setting up the cron job</em></p>
+
+<p>We&rsquo;re actually setting up a crontab, which is the text file that contains the schedule of tasks. I was having problems using my default text editor, Sublime, for crontabs, so I had to set my default crontab editor to Nano by typing this on the command line:</p>
+
+<pre>export VISUAL=nano; crontab -e</pre>
+
+
+<p>After that, open the crontab file by typing:</p>
+
+<pre>crontab -e</pre>
+
+
+<p>This file requires one line containing two things: a series of five numbers corresponding to the time we want the task to run, and the path to the shell script we just wrote.</p>
+
+<p>The numbers come in this order: minutes, hours (in 24-hour format), days of month, months, days of week. I don&rsquo;t care about the day of the week, so I can replace that with an asterisk (*). For example, October 21 at 4:29 pm (i.e. 10/21 at 16:29) is:</p>
+
+<pre>29 16 21 10 *</pre>
+
+
+<p>That&rsquo;s just <em>10/21 - 16:29</em> in reverse order.</p>
+
+<p>The path to my shell script is:</p>
+
+<pre>/Users/jeffslutzky/bttf.sh</pre>
+
+
+<p>So, adding this to the time, the full line to type in for this task is:</p>
+
+<pre>29 16 21 10 * /Users/jeffslutzky/bttf.sh</pre>
+
+
+<p>Save the file. That&rsquo;s it. The tweet is now pre-scheduled. We&rsquo;re all done!</p>
+
+<p>To see the contents of the crontab, type:</p>
+
+<pre>crontab -l</pre>
+
+
+<p>To edit it again, type:</p>
+
+<pre>crontab -e</pre>
+
+
+<p>You can even add other tasks to the crontab file by adding a new line with a new time and shell script path.</p>
+
+<p>I&rsquo;ve actually pre-scheduled two tweets. If my calculations are correct, when this baby hits 88 miles per hour, you&rsquo;re gonna see some serious tweets (at <a href="http://twitter.com/tinmanic">twitter.com/tinmanic</a>).</p>
+
+<p>To recap:</p>
+
+<p>(1) Create a file with an .sh extension containing a command-line action, and set the file permissions.</p>
+
+<pre>#!/bin/bash
+
+/Users/jeffslutzky/.rvm/wrappers/ruby-2.2.3/t update "[tweet text]"</pre>
+
+
+<p>(2) Create a new task in the crontab to execute the above file at a chosen time.</p>
+
+<pre>29 16 21 10 * /Users/jeffslutzky/bttf.sh</pre>
+
+
+<p><em>Helpful links</em></p>
+
+<ul>
+
+<li><a href="https://github.com/sferik/t">the "t" Ruby gem</a></li>
+
+<li><a href="https://developer.apple.com/library/mac/documentation/OpenSource/Conceptual/ShellScripting">Mac Developer Library: Shell Scripting Primer</a></li>
+
+<li><a href="https://rvm.io/deployment/cron">Using RVM with Cron</a></li>
+
+<li><a href="http://www.backtothefuture.com/">Back to the Future fan site</a></li>
+
+<li><a href="http://www.october212015.com/">Countdown to Back to the Future Day</a></li>
+</ul>
+
+
+<p><img src="/images/delorean.jpg"></p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Jeff Slutzky</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+
+<time datetime="2015-10-21T08:25:00-04:00" pubdate data-updated="true">Wednesday, October 21, 2015 |  8:25 AM</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/cron-jobs/'>cron&nbsp;jobs</a>, <a class='category' href='/blog/categories/flatiron-school/'>flatiron&nbsp;school</a>, <a class='category' href='/blog/categories/ruby-gems/'>ruby&nbsp;gems</a>, <a class='category' href='/blog/categories/shell-scripts/'>shell&nbsp;scripts</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://jeffslutzky.github.io/blog/2015/10/21/back-to-the-future-with-cron-jobs-and-ruby-gems/" data-via="" data-counturl="http://jeffslutzky.github.io/blog/2015/10/21/back-to-the-future-with-cron-jobs-and-ruby-gems/" >Tweet</a>
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2015/10/04/sublime-hints-and-shortcuts/" title="Previous Post: Sublime Hints and Shortcuts">&laquo; Sublime Hints and Shortcuts</a>
+      
+      
+        <a class="basic-alignment right" href="/blog/2015/11/05/refactoring-your-code-after-adding-a-feature/" title="Next Post: Refactoring Your Code After Adding a Feature">Refactoring Your Code After Adding a Feature &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+</div>
+
+  <aside class="sidebar">
+   
+<form action="https://www.google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:jeffslutzky.github.io" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2015/11/23/sending-gmail-emails-with-rails/">Sending Gmail Emails With Rails</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2015/11/05/refactoring-your-code-after-adding-a-feature/">Refactoring Your Code After Adding a Feature</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2015/10/21/back-to-the-future-with-cron-jobs-and-ruby-gems/">Back to the Future With Cron Jobs and Ruby Gems</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2015/10/04/sublime-hints-and-shortcuts/">Sublime Hints and Shortcuts</a>
+      </li>
+    
+  </ul>
+</section>
+
+<section>
+  <h1>GitHub Repos</h1>
+  <ul id="gh_repos">
+    <li class="loading">Status updating...</li>
+  </ul>
+  
+  <a href="https://github.com/jeffslutzky">@jeffslutzky</a> on GitHub
+  
+  <script type="text/javascript">
+    $(document).ready(function(){
+        if (!window.jXHR){
+            var jxhr = document.createElement('script');
+            jxhr.type = 'text/javascript';
+            jxhr.src = '/javascripts/libs/jXHR.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(jxhr, s);
+        }
+
+        github.showRepos({
+            user: 'jeffslutzky',
+            count: 0,
+            skip_forks: true,
+            target: '#gh_repos'
+        });
+    });
+  </script>
+  <script src="/javascripts/github.js" type="text/javascript"> </script>
+</section>
+
+
+
+
+
+  
+</aside>
+
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2015 - Jeff Slutzky -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+<script>
+  $(document).ready(function() {  
+    var stickyNavTop = $('nav').offset().top;  
+      
+    var stickyNav = function(){  
+      var scrollTop = $(window).scrollTop(); 
+      var navHasClassSticky = $('nav').hasClass('sticky');
+
+      if (scrollTop > stickyNavTop && navHasClassSticky) {   
+        return true;
+      } else if (scrollTop > stickyNavTop) {
+        $('nav').hide();
+        $('nav').addClass('sticky');
+        $('nav').fadeIn('2000');
+      } else {  
+        $('nav').removeClass('sticky');   
+      }  
+    };  
+      
+    stickyNav();  
+      
+    $(window).scroll(function() {  
+      stickyNav();  
+    });  
+  });  
+</script>
+
+
+</body>
+</html>

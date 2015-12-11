@@ -1,0 +1,311 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Sublime Hints and Shortcuts - Coding Flatironically</title>
+  <meta name="author" content="Jeff Slutzky">
+
+  
+  <meta name="description" content="I&rsquo;ve completed my first week as a student in the Flatiron School&rsquo;s Web Development Immersive program. It&rsquo;s been exciting and fun &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://jeffslutzky.github.io/blog/2015/10/04/sublime-hints-and-shortcuts">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="Coding Flatironically" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href='https://fonts.googleapis.com/css?family=Noto+Serif:400,700' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+
+  
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">Coding Flatironically</a></h1>
+  
+    <h2>Learning web development at the Flatiron School</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  
+  
+</ul>
+
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">Sublime Hints and Shortcuts</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+
+<time datetime="2015-10-04T16:14:16-04:00" pubdate data-updated="true">Sunday, October  4, 2015 |  4:14 PM</time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p>I&rsquo;ve completed my first week as a student in the <a href="http://www.flatironschool.com">Flatiron School&rsquo;s</a> Web Development Immersive program. It&rsquo;s been exciting and fun and busy and I&rsquo;ve met friendly, interesting people. It&rsquo;s the best experience I&rsquo;ve had in ages.</p>
+
+<p>In this blog post I&rsquo;ll cover <a href="http://www.sublimetext.com/">Sublime</a>. Sublime is the default text editor we use at the Flatiron School; we use it to write all our Ruby programs, and I&rsquo;m using it to write this very blog post. Besides Terminal, it&rsquo;s probably the program we use most often. Therefore, knowing some Sublime tips and shortcuts can help a programmer become much more efficient. One of our instructors sent us a link to a <a href="http://sublime-text-unofficial-documentation.readthedocs.org/en/latest/reference/keyboard_shortcuts_osx.html">whole bunch of Sublime shortcuts</a>. I thought I&rsquo;d cover some of those, and some other tips I&rsquo;ve found most useful so far:</p>
+
+<!-- more -->
+
+
+<p><em>Setting up your visual environment.</em> Since you&rsquo;ll be staring at the Sublime interface all the time, you&rsquo;ll want the screen to look pleasant. The default environment for Sublime is light text on a black background. I find that to be hard on my eyes, but fortunately you can change this. In the menu, go to Sublime Text > Preferences > Color Scheme. Under this menu, Flatiron&rsquo;s Sublime installation has an option called Colorsublime-Themes, where you can pick Solarized Dark or Solarized Light. I use Solarized Light, which gives you a soothing beige background:</p>
+
+<p><img src="/images/solarized_light.png"></p>
+
+<p>There are a ton of other options in the menu under Color Scheme - Default.</p>
+
+<p><em>Multiple column view.</em> Most Flatiron labs require getting certain tests to pass. It can be helpful to be able to look at your code and the test at the same time, especally when the test includes some data, such as a sample hash that you need to transform into another hash, or some supplied variables. To do this, you can press OPTION+CONTROL plus the number of columns you want. Pressing OPTION+CTRL+2 will give you two columns, and then you can drag any of the open tabs to any column:</p>
+
+<p><img src="/images/two_column_view.png"></p>
+
+<p>Since this will give you narrower columns, you can then go to the menu bar and select View > Word Wrap so everything remains on the screen.</p>
+
+<p>To switch back to single-column view, press OPTION+CTRL+1.</p>
+
+<p><em>Comment out a line from anywhere on that line.</em> Often I&rsquo;m using binding.pry to look into my program, but then I want to stop using binding.pry and just see if my tests pass. Instead of repeatedly typing and deleting &ldquo;binding.pry,&rdquo; you can just comment it out by typing COMMAND and the slash key (/). The nice thing is that you don&rsquo;t even have to be on the beginning of the line. If you type COMMAND + / from anywhere on that line, it will put a pound sign at the beginning of the line and comment out the whole line. To un-comment a line, just press COMMAND + / again.</p>
+
+<p><em>Replace every instance of some text with different text.</em> Sometimes you&rsquo;ve named a variable but later decide you want to change it to something else. You can easily change every instance of the variable in your program. Just highlight any instance of the text, and <em>every</em> instance of that text will then have an outline around it:</p>
+
+<p><img src="/images/highlighted_text.png"></p>
+
+<p>Now, press CTRL+COMMAND+G and you can then edit every single instance of that text at once! Everything you type will affect every instance of that text in your program:</p>
+
+<p><img src="/images/edited_text.png"></p>
+
+<p>When you&rsquo;re done, click anywhere in your program to stop. So cool.</p>
+
+<p>(Just be careful - if your program contains, for example, &ldquo;item&rdquo; and &ldquo;items,&rdquo; you won&rsquo;t be able to edit &ldquo;item&rdquo; without also editing &ldquo;items.&rdquo;)</p>
+
+<p><em>Move an entire chunk of text up or down.</em> If you want to move some text to a different part of your program - for example, if you want to rearrange the order of your methods - just highlight the lines of text you want to move, then click CTRL-COMMAND and the up-arrow or down-arrow. The entire chunk of text will move up or down a line each time you click.</p>
+
+<p>There are so many other shortcuts in Sublime. It would be hard to <a href="http://sublime-text-unofficial-documentation.readthedocs.org/en/latest/reference/keyboard_shortcuts_osx.html">memorize them all at once</a>, but the more I use Sublime, the more I&rsquo;ll probably become familiar with them. You will, too.</p>
+
+<p>Sublime is&hellip; sublime.</p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Jeff Slutzky</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+
+<time datetime="2015-10-04T16:14:16-04:00" pubdate data-updated="true">Sunday, October  4, 2015 |  4:14 PM</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/flatiron-school/'>flatiron&nbsp;school</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://jeffslutzky.github.io/blog/2015/10/04/sublime-hints-and-shortcuts/" data-via="" data-counturl="http://jeffslutzky.github.io/blog/2015/10/04/sublime-hints-and-shortcuts/" >Tweet</a>
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+      
+        <a class="basic-alignment right" href="/blog/2015/10/21/back-to-the-future-with-cron-jobs-and-ruby-gems/" title="Next Post: Back to the Future With Cron Jobs and Ruby Gems">Back to the Future With Cron Jobs and Ruby Gems &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+</div>
+
+  <aside class="sidebar">
+   
+<form action="https://www.google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:jeffslutzky.github.io" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2015/11/23/sending-gmail-emails-with-rails/">Sending Gmail Emails With Rails</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2015/11/05/refactoring-your-code-after-adding-a-feature/">Refactoring Your Code After Adding a Feature</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2015/10/21/back-to-the-future-with-cron-jobs-and-ruby-gems/">Back to the Future With Cron Jobs and Ruby Gems</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2015/10/04/sublime-hints-and-shortcuts/">Sublime Hints and Shortcuts</a>
+      </li>
+    
+  </ul>
+</section>
+
+<section>
+  <h1>GitHub Repos</h1>
+  <ul id="gh_repos">
+    <li class="loading">Status updating...</li>
+  </ul>
+  
+  <a href="https://github.com/jeffslutzky">@jeffslutzky</a> on GitHub
+  
+  <script type="text/javascript">
+    $(document).ready(function(){
+        if (!window.jXHR){
+            var jxhr = document.createElement('script');
+            jxhr.type = 'text/javascript';
+            jxhr.src = '/javascripts/libs/jXHR.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(jxhr, s);
+        }
+
+        github.showRepos({
+            user: 'jeffslutzky',
+            count: 0,
+            skip_forks: true,
+            target: '#gh_repos'
+        });
+    });
+  </script>
+  <script src="/javascripts/github.js" type="text/javascript"> </script>
+</section>
+
+
+
+
+
+  
+</aside>
+
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2015 - Jeff Slutzky -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+<script>
+  $(document).ready(function() {  
+    var stickyNavTop = $('nav').offset().top;  
+      
+    var stickyNav = function(){  
+      var scrollTop = $(window).scrollTop(); 
+      var navHasClassSticky = $('nav').hasClass('sticky');
+
+      if (scrollTop > stickyNavTop && navHasClassSticky) {   
+        return true;
+      } else if (scrollTop > stickyNavTop) {
+        $('nav').hide();
+        $('nav').addClass('sticky');
+        $('nav').fadeIn('2000');
+      } else {  
+        $('nav').removeClass('sticky');   
+      }  
+    };  
+      
+    stickyNav();  
+      
+    $(window).scroll(function() {  
+      stickyNav();  
+    });  
+  });  
+</script>
+
+
+</body>
+</html>
