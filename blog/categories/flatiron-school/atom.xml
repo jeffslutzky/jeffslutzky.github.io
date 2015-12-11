@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Flatiron&nbsp;school | Coding Flatironically]]></title>
   <link href="http://jeffslutzky.github.io/blog/categories/flatiron-school/atom.xml" rel="self"/>
   <link href="http://jeffslutzky.github.io/"/>
-  <updated>2015-11-23T22:46:41-05:00</updated>
+  <updated>2015-12-10T19:10:18-05:00</updated>
   <id>http://jeffslutzky.github.io/</id>
   <author>
     <name><![CDATA[Jeff Slutzky]]></name>
@@ -12,6 +12,35 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[The Top Ten Things I Learned at Flatiron School]]></title>
+    <link href="http://jeffslutzky.github.io/blog/2015/12/09/the-top-ten-things-i-learned-at-flatiron-school/"/>
+    <updated>2015-12-09T23:09:00-05:00</updated>
+    <id>http://jeffslutzky.github.io/blog/2015/12/09/the-top-ten-things-i-learned-at-flatiron-school</id>
+    <content type="html"><![CDATA[<p>I&rsquo;m nearly done with my 12 weeks as a Web Development Immersive student here at the Flatiron School. I thought I&rsquo;d share the top ten things I&rsquo;ve learned &ndash; the things I&rsquo;d tell new students.</p>
+
+<p><strong>1. Relax.</strong> You might have read that Flatiron requires a commitment of up to 70 hours per week. But much of the time, you&rsquo;ll be having fun! The typical Flatiron day is only loosely structured. When you&rsquo;re not in lecture, you&rsquo;ll most likely be working on labs. This gives lots of opportunity to be social. In the evenings and on the weekends, you&rsquo;ll probably be working on labs and doing some reading assignments. But this is fun, too, because you&rsquo;re learning.</p>
+
+<p><strong>2. You don&rsquo;t have to finish every lab.</strong> On many days, you&rsquo;ll be assigned more labs than most students can possibly complete in a day. The point of doing labs is not to get green lights; it&rsquo;s to learn, and to get coding practice. You won&rsquo;t be penalized for not finishing every lab. There are no grades here! You can always come back to some labs on the weekends or later in the course. A corollary to this is:</p>
+
+<p><strong>3. Get enough sleep.</strong> A good night&rsquo;s sleep is important. You&rsquo;ll learn and retain more during the school day if you get a good night&rsquo;s sleep. There&rsquo;s no need to sacrifice sleep for labs or assignments. You don&rsquo;t need to be a hero.</p>
+
+<p><strong>4. Go easy on yourself.</strong> Don&rsquo;t worry about how well you&rsquo;re doing compared to your classmates. Some people might finish labs faster than you; so what? It&rsquo;s not about speed. You&rsquo;ll all make it to the end of the course. Lots of us tend to focus on people who are doing better than us instead of on those who are doing as well as us. There will be some super-speedy folks in your class. That&rsquo;s okay. You&rsquo;re smart, too, otherwise you wouldn&rsquo;t have gotten accepted to Flatiron.</p>
+
+<p><strong>5. Ask lots of questions.</strong> Don&rsquo;t be afraid to ask questions during lecture if you don&rsquo;t fully understand what&rsquo;s going on. If you don&rsquo;t grasp something, you&rsquo;re probably not the only one. Your classmates will be grateful that you asked. Plus, you&rsquo;re paying a lot of tuition &ndash; ask questions and get your money&rsquo;s worth! That said:</p>
+
+<p><strong>6. Let yourself struggle sometimes.</strong> When you&rsquo;re unsure about something on a lab, try to figure it out on your own or from a classmate before asking an instructor for help &ndash; not because the instructors are busy, but because you&rsquo;ll learn more if you try to figure something out on your own first. Google is your friend. If you&rsquo;re still stuck after a while, definitely talk to an instructor or classmate. You can&rsquo;t learn if have no clue what to do.</p>
+
+<p><strong>7. Step away from the computer. Take breaks.</strong> This is really important. There are many times when I&rsquo;ve been frustrated by a lab and kept metaphorically banging my head against my computer. If this happens to you, it&rsquo;s best to clear your mind and go for a walk. Exercise helps your brain. The solution to your problem might pop into your head when you&rsquo;re doing something else, or you might come back to your computer refreshed and ready to figure it out. It&rsquo;s better than getting mad.</p>
+
+<p><strong>8. Make friends!</strong> This should be easy. My classmates are terrific. At the end of just one week, I felt like I&rsquo;d known them for months. You&rsquo;re all in the same boat &ndash; you can commiserate, drink together, empathize with them. Everything in life is better when you&rsquo;re around good people. Hang out after class on Friday.</p>
+
+<p><strong>9. Enjoy Feelings Friday.</strong> Every Friday afternoon, your class will sit on chairs in a circle and everyone will say how they feel about the past week. I happen to love Feelings Friday, but some people don&rsquo;t like talking about their feelings. If you&rsquo;re one of the latter, remember that someone else might benefit from hearing what you have to say. It&rsquo;s great when someone expresses something that you yourself are feeling.</p>
+
+<p><strong>10. Take time to appreciate being here. It&rsquo;ll go by fast.</strong> You&rsquo;ll be at Flatiron for only about three months. One day you&rsquo;ll realize that half the program has gone by, and then the next thing you know, you&rsquo;ll be working on final projects and your resume. Don&rsquo;t let the whole thing be a blur. Stop and take a mental photograph every so often. You&rsquo;re lucky to be here.</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Sending Gmail Emails With Rails]]></title>
@@ -28,6 +57,11 @@
 
 
 <p>This creates a file called <strong>app/mailers/user_mailer.rb</strong>. More on this file later.</p>
+
+<p>We also need to create a new route in <strong>config.routes</strong>:</p>
+
+<pre>get 'users/create', to: 'users#create'</pre>
+
 
 <p>In our project, the user enters an email address via a form. In the code below, the form_tag directs to the <strong>users/create</strong> action - the <strong>create</strong> method in the User controller - and the e-mail field passes an <strong>:email_address</strong> to the params. And since we want to send the user a photo URL, we pass the photo URL as a hidden field:</p>
 
