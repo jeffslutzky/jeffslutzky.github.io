@@ -96,11 +96,6 @@
 
 <p>This creates a file called <strong>app/mailers/user_mailer.rb</strong>. More on this file later.</p>
 
-<p>We also need to create a new route in <strong>config.routes</strong>:</p>
-
-<pre>get 'users/create', to: 'users#create'</pre>
-
-
 <p>In our project, the user enters an email address via a form. In the code below, the form_tag directs to the <strong>users/create</strong> action - the <strong>create</strong> method in the User controller - and the e-mail field passes an <strong>:email_address</strong> to the params. And since we want to send the user a photo URL, we pass the photo URL as a hidden field:</p>
 
 <pre><%= form_tag("users/create", method: "get") do %>
@@ -271,8 +266,6 @@ gmail_password: "123456789"</pre>
         <a class="basic-alignment left" href="/blog/2015/11/05/refactoring-your-code-after-adding-a-feature/" title="Previous Post: Refactoring Your Code After Adding a Feature">&laquo; Refactoring Your Code After Adding a Feature</a>
       
       
-        <a class="basic-alignment right" href="/blog/2015/12/09/the-top-ten-things-i-learned-at-flatiron-school/" title="Next Post: The Top Ten Things I Learned at Flatiron School">The Top Ten Things I Learned at Flatiron School &raquo;</a>
-      
     </p>
   </footer>
 </article>
@@ -292,10 +285,6 @@ gmail_password: "123456789"</pre>
     <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
-    
-      <li class="post">
-        <a href="/blog/2015/12/09/the-top-ten-things-i-learned-at-flatiron-school/">The Top Ten Things I Learned at Flatiron School</a>
-      </li>
     
       <li class="post">
         <a href="/blog/2015/11/23/sending-gmail-emails-with-rails/">Sending Gmail Emails With Rails</a>
